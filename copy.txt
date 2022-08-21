@@ -1,8 +1,19 @@
-// Copy In RecyclerView
+// Copy Text In RecyclerView
 
 holder.binding.copy.setOnClickListener(v -> {
             ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("label", model.getJokes());
             clipboard.setPrimaryClip(clip);
             Toast.makeText(context, "Copy...", Toast.LENGTH_SHORT).show();
+        });
+        
+        
+        
+        // Copy Text in recyclerView without model
+        
+           holder.share.setOnClickListener(v -> {
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("text/plane");
+            share.putExtra(Intent.EXTRA_TEXT, holder.textView.getText().toString());
+            context.startActivity(share);
         });
